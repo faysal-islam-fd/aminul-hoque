@@ -1,0 +1,70 @@
+/* Vision Card Styles */
+.vision-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.vision-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.vision-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(244, 42, 65, 0.2);
+    color: var(--white);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.vision-card:hover .vision-icon {
+    background: var(--primary-red);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-red);
+}
+
+.vision-title {
+    color: var(--white);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+}
+
+.vision-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-relaxed);
+}
+
+.vision-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.vision-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--text-sm);
+}
+
+.vision-list .check-icon {
+    color: var(--gold);
+    margin-top: 4px;
+    flex-shrink: 0;
+    font-size: var(--text-xs);
+}

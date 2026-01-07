@@ -1,0 +1,64 @@
+/* Vision Page Styles */
+.vision-page {
+    padding-bottom: 80px;
+}
+
+@media (min-width: 1024px) {
+    .vision-page {
+        padding-bottom: 0;
+    }
+}
+
+.vision-main {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-page-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(244, 42, 65, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.vision-intro {
+    max-width: 800px;
+    margin: 0 auto var(--space-12);
+    text-align: center;
+}
+
+.vision-intro p {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: var(--leading-loose);
+}
+
+@media (min-width: 768px) {
+    .vision-intro p {
+        font-size: var(--text-xl);
+    }
+}
+
+.vision-grid-full {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+    .vision-grid-full {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .vision-grid-full {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
