@@ -70,44 +70,44 @@ const Home = () => {
                             </div>
                             <div className="absolute -bottom-6 -right-6 bg-gradient-red text-white 
                                 px-6 py-4 rounded-xl shadow-red text-center">
-                                <span className="block text-3xl font-extrabold">২০+</span>
-                                <span className="text-sm opacity-90">বছর<br />সেবায়</span>
+                                <span className="block text-3xl font-extrabold">২০</span>
+                                <span className="text-sm opacity-90">বছর<br />ফুটবল ক্যারিয়ার</span>
                             </div>
                         </div>
 
                         {/* Text */}
                         <div data-aos="fade-left">
                             <span className="section-badge">পরিচিতি</span>
-                            <h2 className="section-title">আমি আপনাদেরই একজন</h2>
+                            <h2 className="section-title">কিংবদন্তি গোলরক্ষক থেকে জননেতা</h2>
                             <p className="text-gray-600 leading-relaxed mb-4">
-                                আমি মোহাম্মদ আমিনুল হক - গত দুই দশকেরও বেশি সময় ধরে জনগণের সেবায় নিজেকে উৎসর্গ করেছি।
-                                আপনাদের সমস্যা আমার সমস্যা, আপনাদের স্বপ্ন আমার স্বপ্ন।
+                                আমি মোহাম্মদ আমিনুল হক - বাংলাদেশ জাতীয় ফুটবল দলের প্রাক্তন গোলরক্ষক ও অধিনায়ক।
+                                ২০১০ সালের দক্ষিণ এশিয়ান গেমসে অধিনায়ক হিসেবে বাংলাদেশকে ঐতিহাসিক স্বর্ণপদক জয়ে নেতৃত্ব দিয়েছি।
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-8">
-                                ঢাকা ১৬ আসন থেকে সংসদ সদস্য প্রার্থী হিসেবে আমি আপনাদের সেবা করার সুযোগ চাই।
-                                একসাথে আমরা একটি সমৃদ্ধ ও উন্নত এলাকা গড়ে তুলতে পারি।
+                                মাঠে যেমন দেশের জার্সি গায়ে দিয়ে লড়াই করেছি, এখন ঢাকা ১৬ আসন থেকে সংসদ সদস্য প্রার্থী হিসেবে
+                                জনগণের সেবায় একই আবেগ ও নিষ্ঠায় কাজ করতে চাই।
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md">
                                     <FaUsers className="text-green-700 text-2xl" />
                                     <div>
-                                        <h4 className="font-bold text-gray-900">১০,০০০+ পরিবার</h4>
-                                        <p className="text-gray-500 text-sm">সহায়তা প্রদান</p>
+                                        <h4 className="font-bold text-gray-900">৫৬ ম্যাচ</h4>
+                                        <p className="text-gray-500 text-sm">জাতীয় দলে</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md">
                                     <FaGraduationCap className="text-green-700 text-2xl" />
                                     <div>
-                                        <h4 className="font-bold text-gray-900">১০০+ শিক্ষা বৃত্তি</h4>
-                                        <p className="text-gray-500 text-sm">দরিদ্র শিক্ষার্থীদের</p>
+                                        <h4 className="font-bold text-gray-900">৪ বার অধিনায়ক</h4>
+                                        <p className="text-gray-500 text-sm">জাতীয় দলের</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md">
                                     <FaHandHoldingHeart className="text-green-700 text-2xl" />
                                     <div>
-                                        <h4 className="font-bold text-gray-900">৫০+ সামাজিক প্রকল্প</h4>
-                                        <p className="text-gray-500 text-sm">সফলভাবে বাস্তবায়িত</p>
+                                        <h4 className="font-bold text-gray-900">স্বর্ণপদক ২০১০</h4>
+                                        <p className="text-gray-500 text-sm">দক্ষিণ এশিয়ান গেমস</p>
                                     </div>
                                 </div>
                             </div>

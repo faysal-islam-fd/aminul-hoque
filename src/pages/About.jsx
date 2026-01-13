@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaHeartbeat, FaFlag, FaAward, FaUsers, FaHandHoldingHeart, FaBookOpen } from 'react-icons/fa';
+import { FaGraduationCap, FaHeartbeat, FaFlag, FaAward, FaUsers, FaHandHoldingHeart, FaBookOpen, FaFutbol, FaTrophy, FaMedal } from 'react-icons/fa';
 import { candidateData, biography, achievements, socialActivities } from '../data/siteData';
 import PageHeader from '../components/PageHeader';
 
@@ -14,7 +14,11 @@ const About = () => {
             'FaHeartbeat': <FaHeartbeat />,
             'FaGraduationCap': <FaGraduationCap />,
             'FaFlag': <FaFlag />,
-            'FaAward': <FaAward />
+            'FaAward': <FaAward />,
+            'FaFutbol': <FaFutbol />,
+            'FaTrophy': <FaTrophy />,
+            'FaMedal': <FaMedal />,
+            'FaUsers': <FaUsers />
         };
         return icons[iconName] || <FaAward />;
     };
@@ -93,6 +97,62 @@ const About = () => {
                     <div className="max-w-3xl mx-auto space-y-4 text-gray-600 leading-relaxed" data-aos="fade-up">
                         <p>{biography.earlyLife}</p>
                         <p>{biography.education}</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Football Career Section */}
+            <section className="section">
+                <div className="container">
+                    <div className="section-header" data-aos="fade-up">
+                        <span className="section-badge">ফুটবল ক্যারিয়ার</span>
+                        <h2 className="section-title">২০ বছরের গৌরবোজ্জ্বল যাত্রা</h2>
+                    </div>
+
+                    <div className="max-w-4xl mx-auto" data-aos="fade-up">
+                        <p className="text-center text-gray-600 leading-relaxed mb-8">
+                            {biography.footballCareer}
+                        </p>
+
+                        {/* Career Stats */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                            <div className="bg-gradient-green text-white rounded-xl p-4 text-center">
+                                <FaFutbol className="text-3xl mx-auto mb-2 text-gold-400" />
+                                <span className="block text-2xl font-bold">{candidateData.footballCareer.internationalCaps}</span>
+                                <span className="text-sm opacity-80">আন্তর্জাতিক ম্যাচ</span>
+                            </div>
+                            <div className="bg-gradient-green text-white rounded-xl p-4 text-center">
+                                <FaFlag className="text-3xl mx-auto mb-2 text-gold-400" />
+                                <span className="block text-2xl font-bold">৪ বার</span>
+                                <span className="text-sm opacity-80">জাতীয় দল অধিনায়ক</span>
+                            </div>
+                            <div className="bg-gradient-green text-white rounded-xl p-4 text-center">
+                                <FaMedal className="text-3xl mx-auto mb-2 text-gold-400" />
+                                <span className="block text-2xl font-bold">স্বর্ণ</span>
+                                <span className="text-sm opacity-80">SAG ২০১০</span>
+                            </div>
+                            <div className="bg-gradient-green text-white rounded-xl p-4 text-center">
+                                <FaTrophy className="text-3xl mx-auto mb-2 text-gold-400" />
+                                <span className="block text-2xl font-bold">সেরা</span>
+                                <span className="text-sm opacity-80">গোলরক্ষক ২০০৯</span>
+                            </div>
+                        </div>
+
+                        {/* Club Career */}
+                        <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                            <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <FaFutbol className="text-green-700" />
+                                ক্লাব ক্যারিয়ার
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                {candidateData.footballCareer.clubs.map((club, index) => (
+                                    <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors">
+                                        <span className="font-medium text-gray-800">{club.name}</span>
+                                        <span className="text-green-700 font-semibold text-sm">{club.years}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
