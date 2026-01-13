@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Styles
-import './styles/global.css';
-
 // Layout Components
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -39,9 +36,9 @@ function App() {
     <Router>
       <ScrollToTop />
       <Preloader />
-      <div className="app">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="main-content">
+        <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

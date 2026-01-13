@@ -2,85 +2,50 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExpand } from 'react-icons/fa';
 import PageHeader from '../components/PageHeader';
-import './Gallery.css';
 
-// Gallery images - using working image URLs
+// Import all gallery images
+import img1 from '../assets/images/463813072_1073420937500952_11384.png';
+import img2 from '../assets/images/608715721_1398078648368511_82649.png';
+import img3 from '../assets/images/607651435_1394573605385682_34534.png';
+import img4 from '../assets/images/612132175_1401137684729274_84437.png';
+import img5 from '../assets/images/605116932_1391788972330812_43191.png';
+import img6 from '../assets/images/605129893_1395291801980529_45492.png';
+import img7 from '../assets/images/475971111_1147663260076719_67573.png';
+import img8 from '../assets/images/479185237_1151552559687789_89448.png';
+import img9 from '../assets/images/480999363_1156654902510888_71015.png';
+import img10 from '../assets/images/610881490_1398664928309883_64986.png';
+import img11 from '../assets/images/610920953_1398686748307701_10083.png';
+import img12 from '../assets/images/611658446_1398664978309878_77424.png';
+import img13 from '../assets/images/613661364_1403225744520468_31375.png';
+import img14 from '../assets/images/614052904_1402684657907910_71930.png';
+import img15 from '../assets/images/615309730_1404655214377521_29495.png';
+import img16 from '../assets/images/615377800_1404654977710878_86709.png';
+import img17 from '../assets/images/615416672_1404655477710828_73718.png';
+import img18 from '../assets/images/615428918_1404655047710871_14325.png';
+
+// Gallery images with real campaign photos
 const galleryImages = [
-    {
-        id: 1,
-        src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=800&fit=crop&crop=face",
-        alt: "আমিনুল হক - অফিসিয়াল পোর্ট্রেট",
-        category: "প্রোফাইল"
-    },
-    {
-        id: 2,
-        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&crop=face",
-        alt: "আমিনুল হক - ফুল পোর্ট্রেট",
-        category: "প্রোফাইল"
-    },
-    {
-        id: 3,
-        src: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80",
-        alt: "ফুটবল মাঠে গোলরক্ষক",
-        category: "ক্যারিয়ার"
-    },
-    {
-        id: 4,
-        src: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
-        alt: "ফুটবল খেলোয়াড় উদযাপন",
-        category: "ক্যারিয়ার"
-    },
-    {
-        id: 5,
-        src: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800&q=80",
-        alt: "জনসভায় অংশগ্রহণ",
-        category: "রাজনীতি"
-    },
-    {
-        id: 6,
-        src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80",
-        alt: "গণসংযোগ কার্যক্রম",
-        category: "কার্যক্রম"
-    },
-    {
-        id: 7,
-        src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80",
-        alt: "সম্মেলনে বক্তব্য",
-        category: "রাজনীতি"
-    },
-    {
-        id: 8,
-        src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
-        alt: "জনসমাবেশ",
-        category: "কার্যক্রম"
-    },
-    {
-        id: 9,
-        src: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&q=80",
-        alt: "ক্রীড়া সম্মাননা",
-        category: "সম্মাননা"
-    },
-    {
-        id: 10,
-        src: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&q=80",
-        alt: "সাংস্কৃতিক অনুষ্ঠান",
-        category: "সংস্কৃতি"
-    },
-    {
-        id: 11,
-        src: "https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?w=800&q=80",
-        alt: "শিক্ষা কার্যক্রম",
-        category: "সমাজসেবা"
-    },
-    {
-        id: 12,
-        src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
-        alt: "দাতব্য কর্মসূচি",
-        category: "সমাজসেবা"
-    }
+    { id: 1, src: img1, alt: "আমিনুল হক - প্রোফাইল পোর্ট্রেট", category: "প্রোফাইল" },
+    { id: 2, src: img2, alt: "আমিনুল হক - অফিসিয়াল ক্যাম্পেইন ফটো", category: "প্রোফাইল" },
+    { id: 3, src: img3, alt: "ধানের শীষে ভোট দিন - নির্বাচনী প্রচারণা", category: "ক্যাম্পেইন" },
+    { id: 4, src: img4, alt: "সবার আগে বাংলাদেশ - ক্যাম্পেইন পোস্টার", category: "ক্যাম্পেইন" },
+    { id: 5, src: img5, alt: "জনসভায় বাংলাদেশের পতাকা হাতে", category: "রাজনীতি" },
+    { id: 6, src: img6, alt: "নেত্রীর সাথে সাক্ষাৎ", category: "রাজনীতি" },
+    { id: 7, src: img7, alt: "ট্রফি গ্রহণ অনুষ্ঠান", category: "সম্মাননা" },
+    { id: 8, src: img8, alt: "রাজনৈতিক কর্মসূচিতে অংশগ্রহণ", category: "রাজনীতি" },
+    { id: 9, src: img9, alt: "জাতীয় দলের গোলরক্ষক", category: "ক্রীড়া" },
+    { id: 10, src: img10, alt: "আমিনুল হক - ফর্মাল পোর্ট্রেট", category: "প্রোফাইল" },
+    { id: 11, src: img11, alt: "দোয়া ও মুনাজাত অনুষ্ঠান", category: "সমাজসেবা" },
+    { id: 12, src: img12, alt: "আমিনুল হক - পোর্ট্রেট", category: "প্রোফাইল" },
+    { id: 13, src: img13, alt: "যুব ফুটবল টুর্নামেন্ট - সেরা খেলোয়াড় পুরস্কার", category: "সমাজসেবা" },
+    { id: 14, src: img14, alt: "বিএনপি চেয়ারম্যান তারেক রহমান", category: "রাজনীতি" },
+    { id: 15, src: img15, alt: "জিয়া অনূর্ধ্ব-১৪ ফুটবল টুর্নামেন্ট - চ্যাম্পিয়ন দল", category: "সমাজসেবা" },
+    { id: 16, src: img16, alt: "টুর্নামেন্ট ফাইনাল - পুরস্কার বিতরণ", category: "সমাজসেবা" },
+    { id: 17, src: img17, alt: "যুব ফুটবল টুর্নামেন্ট - বিজয়ী দল", category: "সমাজসেবা" },
+    { id: 18, src: img18, alt: "টুর্নামেন্ট পুরস্কার প্রদান অনুষ্ঠান", category: "সমাজসেবা" }
 ];
 
-const categories = ["সব", "প্রোফাইল", "ক্যারিয়ার", "রাজনীতি", "কার্যক্রম", "সম্মাননা", "সংস্কৃতি", "সমাজসেবা"];
+const categories = ["সব", "প্রোফাইল", "ক্যাম্পেইন", "রাজনীতি", "ক্রীড়া", "সমাজসেবা", "সম্মাননা"];
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -115,20 +80,23 @@ const Gallery = () => {
     };
 
     return (
-        <div className="gallery-page">
+        <div>
             <PageHeader
                 title="গ্যালারি"
                 subtitle="জনগণের সাথে আমাদের যাত্রার অবিস্মরণীয় মুহূর্তগুলো"
             />
 
-            <section className="section gallery-main">
+            <section className="section">
                 <div className="container">
                     {/* Category Filter */}
-                    <div className="gallery-filter" data-aos="fade-up">
+                    <div className="flex flex-wrap justify-center gap-2 mb-10" data-aos="fade-up">
                         {categories.map((category) => (
                             <button
                                 key={category}
-                                className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
+                                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200
+                                    ${activeCategory === category
+                                        ? 'bg-green-700 text-white shadow-green'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-green-50 hover:text-green-700'}`}
                                 onClick={() => setActiveCategory(category)}
                             >
                                 {category}
@@ -137,33 +105,41 @@ const Gallery = () => {
                     </div>
 
                     {/* Gallery Grid */}
-                    <div className="gallery-grid-full">
-                        {filteredImages.map((image, index) => (
-                            <motion.div
-                                key={image.id}
-                                className="gallery-item-full"
-                                data-aos="zoom-in"
-                                data-aos-delay={index * 50}
-                                onClick={() => openModal(image, index)}
-                                whileHover={{ scale: 1.03 }}
-                                transition={{ duration: 0.3 }}
-                                layout
-                            >
-                                <img src={image.src} alt={image.alt} loading="lazy" />
-                                <div className="gallery-overlay">
-                                    <div className="gallery-overlay-content">
-                                        <FaExpand className="expand-icon" />
-                                        <span className="gallery-category">{image.category}</span>
-                                        <p className="gallery-alt">{image.alt}</p>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <AnimatePresence>
+                            {filteredImages.map((image, index) => (
+                                <motion.div
+                                    key={image.id}
+                                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group"
+                                    data-aos="zoom-in"
+                                    data-aos-delay={index * 50}
+                                    onClick={() => openModal(image, index)}
+                                    whileHover={{ scale: 1.03 }}
+                                    transition={{ duration: 0.3 }}
+                                    layout
+                                >
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+                                        flex flex-col items-center justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <FaExpand className="text-white text-2xl mb-3" />
+                                        <span className="bg-green-700/80 text-white text-xs px-3 py-1 rounded-full mb-2">
+                                            {image.category}
+                                        </span>
+                                        <p className="text-white text-sm text-center line-clamp-2">{image.alt}</p>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
                     </div>
 
                     {filteredImages.length === 0 && (
-                        <div className="no-images">
-                            <p>এই বিভাগে কোনো ছবি নেই</p>
+                        <div className="text-center py-20">
+                            <p className="text-gray-500 text-lg">এই বিভাগে কোনো ছবি নেই</p>
                         </div>
                     )}
                 </div>
@@ -173,20 +149,28 @@ const Gallery = () => {
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div
-                        className="gallery-modal"
+                        className="fixed inset-0 bg-black/95 z-[1000] flex items-center justify-center p-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={closeModal}
                     >
-                        <button className="modal-close" onClick={closeModal}>
+                        <button
+                            className="absolute top-4 right-4 w-12 h-12 bg-white/10 rounded-full 
+                                text-white text-xl flex items-center justify-center hover:bg-white/20 transition-colors"
+                            onClick={closeModal}
+                        >
                             <FaTimes />
                         </button>
-                        <button className="modal-nav prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>
+                        <button
+                            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 rounded-full 
+                                text-white text-xl flex items-center justify-center hover:bg-white/20 transition-colors"
+                            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                        >
                             <FaChevronLeft />
                         </button>
                         <motion.div
-                            className="modal-content"
+                            className="max-w-4xl max-h-[90vh]"
                             onClick={(e) => e.stopPropagation()}
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -195,13 +179,20 @@ const Gallery = () => {
                             <img
                                 src={selectedImage.src}
                                 alt={selectedImage.alt}
+                                className="max-w-full max-h-[80vh] object-contain rounded-xl"
                             />
-                            <div className="modal-caption">
-                                <span className="caption-category">{selectedImage.category}</span>
-                                <p>{selectedImage.alt}</p>
+                            <div className="text-center mt-4">
+                                <span className="bg-green-700 text-white text-sm px-4 py-1 rounded-full">
+                                    {selectedImage.category}
+                                </span>
+                                <p className="text-white mt-3">{selectedImage.alt}</p>
                             </div>
                         </motion.div>
-                        <button className="modal-nav next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>
+                        <button
+                            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 rounded-full 
+                                text-white text-xl flex items-center justify-center hover:bg-white/20 transition-colors"
+                            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                        >
                             <FaChevronRight />
                         </button>
                     </motion.div>

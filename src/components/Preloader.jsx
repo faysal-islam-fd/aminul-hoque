@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './Preloader.css';
 
 const Preloader = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -17,25 +16,31 @@ const Preloader = () => {
         <AnimatePresence>
             {isLoading && (
                 <motion.div
-                    className="preloader"
+                    className="fixed inset-0 bg-gradient-hero z-[9999] flex items-center justify-center"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="preloader-content">
-                        <div className="flag-loader">
-                            <div className="flag-bg"></div>
-                            <div className="flag-circle"></div>
+                    <div className="text-center">
+                        {/* Bangladesh flag loader */}
+                        <div className="relative w-24 h-24 mx-auto mb-6">
+                            <div className="absolute inset-0 bg-green-700 rounded-lg animate-pulse"></div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                w-12 h-12 rounded-full bg-red-500 animate-[ping_1.5s_ease-in-out_infinite]"></div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                w-10 h-10 rounded-full bg-red-500"></div>
                         </div>
+
                         <motion.div
-                            className="preloader-text"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
                         >
-                            <span className="loading-text">লোড হচ্ছে</span>
-                            <span className="loading-dots">
-                                <span>.</span><span>.</span><span>.</span>
+                            <span className="text-white text-xl font-medium">লোড হচ্ছে</span>
+                            <span className="text-gold-400 text-xl ml-1">
+                                <span className="animate-[bounce_1s_ease-in-out_infinite]">.</span>
+                                <span className="animate-[bounce_1s_ease-in-out_infinite_0.2s]">.</span>
+                                <span className="animate-[bounce_1s_ease-in-out_infinite_0.4s]">.</span>
                             </span>
                         </motion.div>
                     </div>

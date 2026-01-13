@@ -1,44 +1,44 @@
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 import { programsData } from '../data/siteData';
 import PageHeader from '../components/PageHeader';
-import './Programs.css';
 
 const Programs = () => {
     return (
-        <div className="programs-page">
+        <div>
             <PageHeader
                 title="কর্মসূচি"
                 subtitle="জনগণের সাথে আমাদের যাত্রার অবিস্মরণীয় মুহূর্তগুলো"
             />
 
-            <section className="section programs-main">
+            <section className="section bg-gray-50">
                 <div className="container">
-                    <div className="programs-timeline-full">
+                    <div className="max-w-4xl mx-auto space-y-6">
                         {programsData.map((program, index) => (
                             <motion.div
                                 key={program.id}
-                                className="program-card"
+                                className="flex gap-6 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
                                 data-aos="fade-up"
                                 data-aos-delay={index * 100}
                                 whileHover={{ x: 10 }}
                             >
-                                <div className="program-date">
-                                    <span className="day">{program.date.day}</span>
-                                    <span className="month">{program.date.month}</span>
+                                <div className="flex-shrink-0 w-20 h-20 bg-gradient-green rounded-xl 
+                                    flex flex-col items-center justify-center text-white shadow-green">
+                                    <span className="text-2xl font-bold">{program.date.day}</span>
+                                    <span className="text-xs opacity-90">{program.date.month}</span>
                                 </div>
 
-                                <div className="program-content">
-                                    <h3>{program.title}</h3>
-                                    <p>{program.description}</p>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">{program.title}</h3>
+                                    <p className="text-gray-600 text-sm mb-4">{program.description}</p>
 
-                                    <div className="program-meta">
-                                        <span>
-                                            <FaClock />
+                                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                                        <span className="flex items-center gap-2">
+                                            <FaClock className="text-green-700" />
                                             {program.time}
                                         </span>
-                                        <span>
-                                            <FaMapMarkerAlt />
+                                        <span className="flex items-center gap-2">
+                                            <FaMapMarkerAlt className="text-green-700" />
                                             {program.location}
                                         </span>
                                     </div>

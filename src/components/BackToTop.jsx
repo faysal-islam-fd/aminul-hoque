@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronUp } from 'react-icons/fa';
-import './BackToTop.css';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -26,7 +25,10 @@ const BackToTop = () => {
         <AnimatePresence>
             {isVisible && (
                 <motion.button
-                    className="back-to-top"
+                    className="fixed bottom-24 lg:bottom-8 right-6 z-[900] w-12 h-12
+                        bg-gradient-green text-white rounded-full shadow-green
+                        flex items-center justify-center text-lg
+                        hover:shadow-[0_15px_40px_rgba(0,106,78,0.5)] transition-shadow"
                     onClick={scrollToTop}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}

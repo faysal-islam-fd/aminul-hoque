@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { navLinks, candidateData } from '../data/siteData';
-import './Header.css';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -36,28 +35,38 @@ const Header = () => {
     };
 
     return (
-        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+        <header className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300
+            ${isScrolled
+                ? 'bg-green-700/95 backdrop-blur-[10px] shadow-lg py-2'
+                : 'bg-transparent py-4'}`}>
             <div className="container">
-                <nav className="navbar">
+                <nav className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/" className="logo">
-                        <div className="logo-icon">
-                            <span>আ</span>
+                    <Link to="/" className="flex items-center gap-3 group">
+                        <div className="w-11 h-11 rounded-full bg-gradient-red flex items-center justify-center shadow-red">
+                            <span className="text-white text-xl font-bold">আ</span>
                         </div>
-                        <div className="logo-content">
-                            <span className="logo-name">{candidateData.shortName}</span>
-                            <span className="logo-tagline">{candidateData.subtitle}</span>
+                        <div className="hidden sm:flex flex-col">
+                            <span className="text-white font-bold text-lg leading-tight group-hover:text-gold-300 transition-colors">
+                                {candidateData.shortName}
+                            </span>
+                            <span className="text-white/70 text-xs">
+                                {candidateData.subtitle}
+                            </span>
                         </div>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <ul className="nav-links desktop-nav">
+                    <ul className="hidden lg:flex items-center gap-1">
                         {navLinks.map((link) => (
                             <li key={link.path}>
                                 <NavLink
                                     to={link.path}
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? 'active' : ''}`
+                                        `px-4 py-2 text-sm font-medium rounded-full transition-all duration-200
+                                        ${isActive
+                                            ? 'bg-white/20 text-white'
+                                            : 'text-white/80 hover:text-white hover:bg-white/10'}`
                                     }
                                 >
                                     {link.label}
@@ -68,7 +77,9 @@ const Header = () => {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className={`menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+                        className={`lg:hidden w-10 h-10 flex items-center justify-center 
+                            bg-white/10 rounded-full text-white transition-all duration-200
+                            hover:bg-white/20 ${isMobileMenuOpen ? 'bg-red-500' : ''}`}
                         onClick={toggleMobileMenu}
                         aria-label="Toggle menu"
                     >
@@ -81,32 +92,38 @@ const Header = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        className="mobile-menu-overlay"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998] lg:hidden"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
+                        onClick={() => setIsMobileMenuOpen(false)}
                     >
                         <motion.div
-                            className="mobile-menu"
+                            className="absolute top-0 right-0 w-[85%] max-w-[320px] h-full 
+                                bg-gradient-to-b from-green-800 to-green-900 shadow-2xl
+                                flex flex-col"
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'tween', duration: 0.3 }}
+                            onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="mobile-menu-header">
-                                <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <div className="logo-icon">
-                                        <span>আ</span>
+                            {/* Mobile menu header */}
+                            <div className="p-6 border-b border-white/10">
+                                <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+                                    <div className="w-12 h-12 rounded-full bg-gradient-red flex items-center justify-center">
+                                        <span className="text-white text-2xl font-bold">আ</span>
                                     </div>
-                                    <div className="logo-text">
-                                        <span className="logo-name">{candidateData.shortName}</span>
-                                        <span className="logo-tagline">{candidateData.subtitle}</span>
+                                    <div className="flex flex-col">
+                                        <span className="text-white font-bold text-lg">{candidateData.shortName}</span>
+                                        <span className="text-white/60 text-sm">{candidateData.subtitle}</span>
                                     </div>
                                 </Link>
                             </div>
 
-                            <ul className="mobile-nav-links">
+                            {/* Mobile nav links */}
+                            <ul className="flex-1 py-6 px-4 overflow-y-auto">
                                 {navLinks.map((link, index) => (
                                     <motion.li
                                         key={link.path}
@@ -117,7 +134,10 @@ const Header = () => {
                                         <NavLink
                                             to={link.path}
                                             className={({ isActive }) =>
-                                                `mobile-nav-link ${isActive ? 'active' : ''}`
+                                                `block px-4 py-3 rounded-xl mb-2 text-base font-medium transition-all
+                                                ${isActive
+                                                    ? 'bg-white/15 text-white border-l-4 border-gold-400'
+                                                    : 'text-white/80 hover:bg-white/10 hover:text-white'}`
                                             }
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
@@ -127,8 +147,9 @@ const Header = () => {
                                 ))}
                             </ul>
 
-                            <div className="mobile-menu-footer">
-                                <p>{candidateData.slogan}</p>
+                            {/* Mobile menu footer */}
+                            <div className="p-6 border-t border-white/10 text-center">
+                                <p className="text-gold-400 font-semibold text-lg">{candidateData.slogan}</p>
                             </div>
                         </motion.div>
                     </motion.div>
